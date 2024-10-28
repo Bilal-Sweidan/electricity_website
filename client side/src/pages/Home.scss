@@ -1,0 +1,119 @@
+// @import '../../fonts.css';
+
+* {
+    padding: 0;
+    margin: 0;
+
+    .main-header {
+        background-color: #021526 !important;
+        user-select: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+
+        .center-div {
+            // position: absolute;
+            // left: 10%;
+
+            .logo {
+                font-family: Sevillana !important;
+                font-size: 30px;
+            }
+        }
+
+        .right-div {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+
+            >ul {
+                list-style: none;
+                display: flex;
+                align-items: center;
+                text-transform: capitalize;
+
+                >li {
+                    cursor: pointer;
+                    text-decoration: none;
+                    color: black;
+                    font-weight: 500;
+                    display: flex;
+                    margin-right: 20px;
+                    margin-top: 5%;
+                }
+            }
+        }
+
+        .left-div {
+            display: flex;
+            align-items: center;
+
+            >a {
+                background-color: #6EACDA;
+                padding: 5px 10px;
+                border-radius: 7px;
+
+                display: flex;
+                align-items: center;
+
+                >p {
+                    font-size: 17px;
+                }
+            }
+
+            // user logo
+            .user-icon {
+                cursor: pointer;
+            }
+
+            .user-menu {
+                background-color: white !important;
+                position: absolute;
+                top: 64px;
+                right: 2%;
+                width: 10%;
+                z-index: 1000;
+                transition: 1s;
+                >a {
+                    transition: .5s;
+                    &:hover  > *{
+                        color: #6EACDA !important;
+                    }
+                }
+            }
+        
+
+            .language-btn {
+                cursor: pointer;
+            }
+
+            .prompt-list {
+                z-index: 1000;
+                top: 100%;
+                right: 7.5%;
+                width: fit-content;
+                padding: 0px 20px;
+                border-radius: 10px;
+                box-shadow: 1px 1px 5px #333;
+
+                ul {
+                    list-style: none;
+                    padding: 0;
+
+                    li {
+                        padding: 5px 10px;
+                        margin: 0;
+                        position: relative;
+
+                        &.list-arrow {
+                            position: absolute;
+                            top: -32%;
+                            left: 26%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

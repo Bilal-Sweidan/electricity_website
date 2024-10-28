@@ -1,0 +1,15 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.pointer{
+    cursor: pointer;
+}
+.pointer-scale{
+    cursor: pointer;
+    transition: 1s;
+}
+.pointer-scale:hover{
+    transform: scale(1.2);
+}
