@@ -61,58 +61,20 @@
                     font-size: 17px;
                 }
             }
-
-            // user logo
-            .user-icon {
-                cursor: pointer;
-            }
-
-            .user-menu {
-                background-color: white !important;
-                position: absolute;
-                top: 64px;
-                right: 2%;
-                width: 10%;
-                z-index: 1000;
+        }
+    }
+    .projects-section{
+        .card {
+            > .about{
+                background-color: #eeeeee7d !important;
+                height: 0 !important; 
+                overflow: hidden;
                 transition: 1s;
-                >a {
-                    transition: .5s;
-                    &:hover  > *{
-                        color: #6EACDA !important;
-                    }
-                }
             }
-        
-
-            .language-btn {
-                cursor: pointer;
-            }
-
-            .prompt-list {
-                z-index: 1000;
-                top: 100%;
-                right: 7.5%;
-                width: fit-content;
-                padding: 0px 20px;
-                border-radius: 10px;
-                box-shadow: 1px 1px 5px #333;
-
-                ul {
-                    list-style: none;
-                    padding: 0;
-
-                    li {
-                        padding: 5px 10px;
-                        margin: 0;
-                        position: relative;
-
-                        &.list-arrow {
-                            position: absolute;
-                            top: -32%;
-                            left: 26%;
-                            // color: #1b49d5;
-                        }
-                    }
+            &:hover{
+                > .about{
+                    height: 100% !important; 
+                    color: brown;
                 }
             }
         }

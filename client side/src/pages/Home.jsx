@@ -5,7 +5,12 @@ import { IoLocation } from "react-icons/io5";
 import { FaFacebook, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { BsPatchPlusFill } from "react-icons/bs";
 import { TbSend2 } from "react-icons/tb";
+import { MdOutlineFullscreenExit } from "react-icons/md";
+import { MdAlternateEmail } from "react-icons/md";
+import { MdPhoneCallback } from "react-icons/md";
 
+// axios
+import axios from "axios"
 
 // react library
 import { useEffect, useState } from 'react';
@@ -23,6 +28,25 @@ import slide_3 from '../../public/slide/electrician-2755682_1920.jpg'
 import slide_4 from '../../public/slide/wire-1098059_1920.jpg'
 const slide_images = [slide_1, slide_2, slide_3, slide_4]
 
+// global var
+// import server_host from '../global_var'
+function Photos({ photos, setWindow }) {
+    return (
+        <main className='card bg-light p-3 w-75  z-2 position-absolute d-flex gap-2' style={{ top: "calc(26% / 2)", left: "calc(25% / 2)", height: "80%" }}>
+            <h2 className='text-center text-capitalize' style={{ fontFamily: "ProtestGuerrilla" }}>more picture</h2>
+            <MdOutlineFullscreenExit className='position-absolute pointer' size={"25px"} onClick={() => setWindow(null)} />
+            <div className='d-flex flex-wrap justify-content-center gap-2 ' style={{ overflowX: 'hidden', overflowY: "scroll" }}>
+                {
+                    photos.length != 0 ?
+                        photos.map(photo => (
+                            <img src={"/projects/" + photo} className='' style={{ width: "300px", height: "400px", borderRadius: "10px" }} alt="" />
+                        )) : <p className='h3 text-capitalize mt-5' style={{ color: "#333" }}>there are no more pictures</p>
+                }
+            </div>
+        </main>
+    )
+}
+
 export default function Home() {
     const [loading, isLoading] = useState(true)
     useEffect(() => {
@@ -30,15 +54,20 @@ export default function Home() {
             isLoading(false)
         }, 6000);
     }, [])
+    // get contact info data 
+    const [contact_info, setContact_info] = useState()
+    const [projects, setProjects] = useState()
+    useEffect(() => {
+        async function getData() {
+            const { data } = await axios.get('http://localhost:3000/')
+            console.log(data.contact_info)
+            setContact_info(data.contact_info)
+            setProjects(data.projects)
+        }
+        getData()
+    }, [])
 
-    const [counter, setCounter] = useState(0)
-    if (counter == 4) {
-        setCounter(0)
-    }
-    setTimeout(() => {
-        setCounter(counter => counter + 1)
-    }, 10000);
-
+    const [window, setWindow] = useState(null)
     if (loading) {
         return (
             <video id='video' autoPlay muted style={{
@@ -55,61 +84,40 @@ export default function Home() {
     }
     return (
         <>
-            <header className="main-header px-3 py-1">
-                <div className="center-div" style={{
-                    width: "13%",
-                    height: "63px"
-                }}>
-                    <Link to='/' className="logo"><img className='w-100' style={{ height: "63px" }} src="../../public/h logo.png" alt="" /></Link>
+            <header className="main-header px-3 py-1 d-flex flex-wrap position-fixed w-100 z-3" >
+                <div className="center-div" style={{ width: "", height: "63px" }}>
+                    <Link to='/' className="logo"><img className='w-100' style={{ height: "63px" }} src="/h logo.png" alt="" /></Link>
                 </div>
                 <div className="right-div">
                     <ul className=''>
-                        {/* <li className="d-flex align-items-center text-light"><IoMdArrowDropdown /> about</li> */}
-                        <li className="d-flex align-items-center text-light"><Link to="/books/categories" className="text-light text-decoration-none">home</Link></li>
-                        <li className="d-flex align-items-center text-light"><Link to="/books/categories" className="text-light text-decoration-none">services</Link></li>
-                        <li className="d-flex align-items-center text-light"><Link to="/books/categories" className="text-light text-decoration-none">our  projects</Link></li>
+                        <li className="d-flex align-items-center text-light"><a href='#services' className="text-light text-decoration-none">hizmetler</a></li>
+                        <li className="d-flex align-items-center text-light"><a href='#projects' className="text-light text-decoration-none">projeler</a></li>
                     </ul>
-                </div>
-                <div className="left-div">
-                    <div className="mx-3">
-                        <MdOutlineDarkMode size={'25px'} className="text-light pointer" />
+                    <div className="left-div">
+                        <a href="#contact-section" className='btn btn-primary text-capitalize'><p className='mx-2 my-0'>bize Ulaşın</p><MdOutlinePhoneEnabled size={"20px"} /></a>
                     </div>
-                    <a href="#contact-section" className='btn btn-primary text-capitalize'><p className='mx-2 my-0'>contact us</p><MdOutlinePhoneEnabled size={"20px"} /></a>
                 </div>
             </header>
             <section className='pt-3 text-bg-dark main-section'>
-                {/* <div className='w-100 h-100'>
-                    <video id='video' autoPlay muted style={{
-                        position: "fixed",
-                        top: "62px",
-                        bottom: "0",
-                        width: "100vw",
-                        height: "90vh",
-                        objectFit: "cover",
-                        zIndex: "-3"
-                    }}>
-                        <source src="../../public/logo.mp4" />
-                    </video>
-                </div> */}
-                <section className='d-flex align-items-center justify-content-between' style={{ height: "calc(100vh - 63px)" }}>
-                    <div className='col-5' style={{ marginLeft: "70px" }}>
-                        <h1 className='text-danger' style={{ fontFamily : "ProtestGuerrilla" , fontSize : "3vw"}}>WE FOCUS ON BUILDING STRONG RELATIONSHIPS</h1>
-                        <p className='' style={{ fontSize: "2vw" , fontFamily : "BebasNeue"}}>For 34 years, we have been building the future with firm steps by prioritizing institutionalism and quality.</p>
+                <section className='d-flex py-4 flex-wrap-reverse align-items-center justify-content-between z-3' style={{ minHeight: "calc(100vh - 63px)", marginTop: "64px" }}>
+                    <div className='text-center w-100'>
+                        <h1 className='text-danger' style={{ fontFamily: "ProtestGuerrilla", fontSize: "45px" }}>WE FOCUS ON BUILDING STRONG RELATIONSHIPS</h1>
+                        <p className='mw-75' style={{ fontSize: "30px", fontFamily: "BebasNeue" }}>For 34 years, we have been building the future with firm steps by prioritizing institutionalism and quality.</p>
 
                         <button className='btn btn-primary text-capitalize'>more about us</button>
                     </div>
-                    <div className='w-100 d-flex align-items-center justify-content-center'>
-                        <img src="../../public/3D logo.png" className='w-75' alt="" />
+                    <div className='d-flex align-items-center justify-content-center'>
+                        <img src="/3D logo.png" className='' style={{ minWidth: "400px", maxWidth: "50%" }} alt="" />
                     </div>
                 </section>
                 {/* slide */}
                 <section className='slide vh-100 w-100'>
-                    <img src={slide_images[counter]} alt="" className='h-100 w-100' />
+                    <img src={slide_images[1]} alt="" className='h-100 w-100' />
                 </section>
                 {/* services card */}
-                <section className='d-flex align-items-center gap-3 justify-content-center' style={{ marginTop: "-300px" }}>
-                    <div className='vh-50 text-bg-light ' style={{ width: "400px", height: "600px", border: "2px solid #eee", borderRadius: "7px" }}>
-                        <img className=' w-100' src="https://www.mericelektrik.com.tr/wp-content/uploads/2021/02/electric-residential-fuses-1024x679.jpg" alt="" />
+                <section id='services' className='d-flex flex-wrap align-items-center gap-3 justify-content-center' style={{ marginTop: "-300px" }}>
+                    <div className='text-bg-light  ' style={{ width: "350px", height: "600px", border: "2px solid #eee", borderRadius: "7px" }}>
+                        <img className=' w-100' src="/electric-residential-fuses-1024x679.jpg" alt="" />
                         <div className='p-4'>
                             <h4 className='my-4'>
                                 ELECTRICITY
@@ -117,7 +125,6 @@ export default function Home() {
                             <p>
                                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos perferendis velit est? Architecto, consectetur. Libero deserunt temporibus aperiam iure alias hic minus, itaque, non cupiditate laboriosam veniam, rem doloribus blanditiis.
                             </p>
-                            <button className='btn btn-primary'>service</button>
                         </div>
                     </div>
                     <div className='p-3 text-bg-dark ' style={{ width: "300px", border: "2px solid #eee", borderRadius: "7px", height: "600px" }}>
@@ -127,74 +134,73 @@ export default function Home() {
                         <p>
                             Meric Electric, Inc. as; We operate in the fields of electrical project design, electrical contracting, consultancy services, measurement, analysis and reporting services.
                         </p>
-                        <nav className='d-flex align-items-center justify-content-center gap-5 my-5'>
-                            <div className='text-center'>
-                                <p className='p-0 m-0'>110 +</p>
-                                <p>team memebers</p>
-                            </div>
-                            <div className='text-center'>
-                                <p className='p-0 m-0'>90 +</p>
-                                <p>projects</p>
-                            </div>
-                        </nav>
-                        <button className='btn btn-light'>service</button>
                     </div>
                 </section>
                 {/* projects section */}
-                <section className='projects-section py-5'>
-                    <h2 className='text-capitalize text-center'>projects</h2>
-                    <div className='d-flex align-items-center p-5 gap-4 justify-content-center flex-wrap'>
-                        <div className='card bg-light' style={{ height: "400px", width: "350px" }}>
-
-                        </div>
-                        <div className='card bg-light' style={{ height: "400px", width: "350px" }}>
-
-                        </div>
-                        <div className='card bg-light' style={{ height: "400px", width: "350px" }}>
-
-                        </div>
+                <section id='projects' className='projects-section py-5 position-relative'>
+                    <h2 className='text-capitalize text-center' style={{ fontFamily: "BebasNeue", fontSize: "40px" }}>en önemli projeler</h2>
+                    <div className='d-flex align-items-center z-1 p-5 gap-4 justify-content-center flex-wrap'>
+                        {
+                            projects?.map((project) => (
+                                <Link to={"/"} className='card ' style={{ height: "400px", width: "350px" }}>
+                                    <img src={"/projects/" + project?.coverImg} alt="" className='w-100 h-100 ' style={{ backgroundPosition: "center" }} />
+                                    <div className='about position-absolute text-bg-light d-flex align-items-center justify-content-center w-100 h-100 text-center'>
+                                        <div style={{ fontFamily: "BebasNeue", fontSize: "20px" }} className='px-3'>
+                                            <p>
+                                                {
+                                                    project?.about
+                                                }
+                                            </p>
+                                            <div className='d-flex justify-content-center'>
+                                                <button className='m-auto gap-2 btn btn-light text-capitalize d-flex align-items-center justify-content-center' onClick={() => { setWindow(project?.images); }}><BsPatchPlusFill size={"25px"} color='#1b49d5' />more</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </Link>
+                            ))
+                        }
                     </div>
-                    <div className='d-flex justify-content-center'>
-                        <button className='m-auto gap-2 btn btn-light text-capitalize d-flex align-items-center justify-content-center'><BsPatchPlusFill size={"25px"} color='#1b49d5' />more</button>
-                    </div>
+                    {
+                        window ? <Photos photos={window} setWindow={setWindow} /> : null
+                    }
+                    {/* {
+                        <div className='d-flex justify-content-center'>
+                            <button className='m-auto gap-2 btn btn-light text-capitalize d-flex align-items-center justify-content-center'><BsPatchPlusFill size={"25px"} color='#1b49d5' />more</button>
+                        </div>
+                    } */}
                 </section>
                 {/* contact section */}
-                <section className='pt-3' id='contact-section'>
-                    <h2 className='text-capitalize text-center'>contact us</h2>
-                    <div className='d-flex mt-5'>
-                        <div style={{ width: "70%" }} className='py-2 px-4 d-flex justify-content-center'>
-                            <form action="" className='w-50' >
-                                <label htmlFor="" className='mb-2 text-uppercase'>Full name</label>
-                                <input type="text" name="" id="" placeholder='name' className='form-control w-100 mb-3' />
-                                
-                                <label htmlFor="" className='mb-2 text-uppercase'>email</label>
-                                <input type="text" name="" id="" placeholder='email' className='form-control w-100 mb-3' />
-                                
-                                <label htmlFor="" className='mb-2 text-uppercase'>message</label>
-                                <textarea name="" id="" placeholder='message' className='form-control w-100 mb-3'></textarea>
-
-                                <button type='submit' className='btn btn-success text-uppercase d-flex align-items-center gap-2'>send <TbSend2 size={"20px"}/></button>
-                            </form>
+                <section className='py-4' id='contact-section' style={{ backgroundColor: "#333" }}>
+                    <h2 className='text-capitalize text-center mb-4' style={{ fontFamily: "BebasNeue", fontSize: "40px" }}>bize Ulaşın</h2>
+                    <div className='d-flex justify-content-center flex-wrap gap-4'>
+                        <div className='card py-4 px-2 text-center' style={{ width: "300px" }}>
+                            <div>
+                                <MdAlternateEmail size={"70px"} color='brown' className='m-auto' />
+                                <h4 className='text-center text-capitalize' style={{ fontFamily: "ProtestGuerrilla" }}>email</h4>
+                                <a href={"mailto:" + contact_info?.email} className='w-100 h-50'>{contact_info?.email}</a>
+                            </div>
                         </div>
-                        <div className='position-relative' style={{ width: "30%", height: "600px" }}>
-                            <img src={slide_1} alt="" className='w-100 h-100 position-relative' />
-                            <div className='position-absolute p-4 w-75 h-75' style={{
-                                background: "#1b4ad554",
-                                backdropFilter: "blur(10px)",
-                                top: "calc(25% / 2)",
-                                left: "calc(25% / 2)"
-                            }}>
-                                <h4 className='text-center text-capitalize'>contact info</h4>
-                                <ul className='list-unstyled'>
-                                    <li className='gap-1 d-flex align-items-center'><MdOutlinePhoneEnabled size={"22px"} /> <p className='m-0'>+905462063676</p></li>
-                                    <li className='gap-1 d-flex align-items-center'><MdOutlineMail size={"22px"} /> <p className='m-0'>lorenzelektrik@gmail.com</p></li>
-                                    <li className='gap-1 d-flex align-items-center'><IoLocation size={"22px"} /> <p className='m-0'>Emin Ali pasha cad. Suadiye / Kadikoy</p></li>
-                                </ul>
-                                <nav className='d-flex align-items-center justify-content-around px-5'>
-                                    <FaFacebook size={"30px"} color='blue' className='pointer-scale' />
-                                    <FaInstagram size={"30px"} color='red' className='pointer-scale' />
-                                    <FaWhatsapp size={"30px"} color='green' className='pointer-scale' />
-                                </nav>
+                        <div className='card py-4 px-2 text-center' style={{ width: "300px" }}>
+                            <div>
+                                <FaInstagram size={"70px"} color='red' className='m-auto' />
+                                <h4 className='text-center text-capitalize' style={{ fontFamily: "ProtestGuerrilla" }}>instagrame</h4>
+                                <a href={contact_info?.instgrame} className='w-100'>{contact_info?.instgrame}</a>
+                            </div>
+                        </div>
+
+                        <div className='card py-4 px-2 text-center' style={{ width: "300px" }}>
+                            <div>
+                                <FaWhatsapp size={"70px"} color='green' className='m-auto' />
+                                <h4 className='text-center text-capitalize' style={{ fontFamily: "ProtestGuerrilla" }}>what's app</h4>
+                                <a href={contact_info?.whatsapp} className='w-100 h-50'>{contact_info?.whatsapp}</a>
+                            </div>
+                        </div>
+
+                        <div className='card py-4 px-2 text-center' style={{ width: "300px" }}>
+                            <div>
+                                <MdPhoneCallback size={"70px"} color='' className='m-auto' />
+                                <h4 className='text-center text-capitalize' style={{ fontFamily: "ProtestGuerrilla" }}>phone</h4>
+                                <p className='h5 w-100 h-50'>{contact_info?.phone}</p>
                             </div>
                         </div>
                     </div>
@@ -205,18 +211,31 @@ export default function Home() {
 
             {/* footer */}
             <footer className='px-5 py-3 text-bg-dark' style={{ borderTop: "1px solid white" }}>
-                <main className='d-flex'>
-                    <div>
-                        <img src="../../public/LORENZ ELEKTRİK LOGO.png" className='' style={{ width: '20%' }} alt="" />
+                <main className='d-flex flex-wrap justify-content-around gap-5'>
+                    <div className='d-flex align-items-center justify-content-center'>
+                        <img src="/LORENZ ELEKTRİK LOGO.png" className='' style={{ width: '200px' }} alt="" />
                     </div>
-                    <div className='card col-2 py-4 px-2'>
-                        <h4 className='text-center text-capitalize'>contact info</h4>
+                    
+                    <div className='text-capitalize w-25 text-center'>
+                        <hr />
+                        <h3 >page sections</h3>
                         <ul className='list-unstyled'>
-                            <li className='gap-1 d-flex align-items-center'><MdOutlinePhoneEnabled size={"22px"} /> <p className='m-0'>+905462063676</p></li>
-                            <li className='gap-1 d-flex align-items-center'><MdOutlineMail size={"22px"} /> <p className='m-0'>lorenzelektrik@gmail.com</p></li>
-                            <li className='gap-1 d-flex align-items-center'><IoLocation size={"22px"} /> <p className='m-0'>Emin Ali pasha cad. Suadiye / Kadikoy</p></li>
+                        <li className="d-flex align-items-center text-light"><a href='#services'  className="text-light text-decoration-none">hizmetler</a></li>
+                            <li className="d-flex align-items-center text-light"><a href='#projects' className="text-light text-decoration-none">projeler</a></li>
+                            <li className="d-flex align-items-center text-light"><a href='#contact-section'  className="text-light text-decoration-none">bize Ulaşın</a></li>
+                        </ul>
+                        <hr />
+                    </div>
+                    <div className='card py-4 px-2 mt-3'>
+                        <h4 className='text-center text-capitalize'>contact info</h4>
+                        <ul className='list-unstyled w-100'>
+                            <li className='gap-1 d-flex align-items-center'><MdOutlinePhoneEnabled color='blue' size={"22px"} /> <p className='m-0 text-overflow-hidden'>{contact_info?.phone}</p></li>
+                            <li className='gap-1 d-flex align-items-center'><MdOutlineMail color='brown' size={"22px"} /> <p className='m-0'>{contact_info?.email}</p></li>
+                            <li className='gap-1 d-flex align-items-center'><FaWhatsapp color='green' size={"22px"} /> <p className='m-0'>{contact_info?.whatsapp}</p></li>
+                            <li className='gap-1 d-flex align-items-center'><FaInstagram color='red' size={"22px"} /> <p className='m-0'>{contact_info?.instgrame}</p></li>
                         </ul>
                         <nav className='d-flex align-items-center justify-content-around px-5'>
+
                             <FaFacebook size={"30px"} color='blue' className='pointer-scale' />
                             <FaInstagram size={"30px"} color='red' className='pointer-scale' />
                             <FaWhatsapp size={"30px"} color='green' className='pointer-scale' />

@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "client": "cd \"client side\" & npm run dev"
+    "client": "cd \"client side\" & npm run dev",
+    "server": "cd \"server side\" & npm run dev"
   },
   "keywords": [],
   "author": "",
