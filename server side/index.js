@@ -23,7 +23,7 @@ app.get('/', async (req, res) => {
     }
 })
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT || 3000, () => {
     mongoose.connect(process.env.DATA_CONECTION_STRING)
         .then(res => {
             console.log("connected")
