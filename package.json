@@ -8,7 +8,7 @@
     "client": "cd \"client side\" && npm run dev",
     "build-client" : "cd \"client side\" && npm run build",
     "install-client": "cd \"client side\" && npm install",
-    "server": "cd \"server side\" && npm run dev",
+    "server": "cd \"server side\" && npm run start",
     "install-server" : "cd \"server side\" && npm install"
   },
   "keywords": [],
