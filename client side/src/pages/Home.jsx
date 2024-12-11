@@ -59,7 +59,7 @@ export default function Home() {
     const [projects, setProjects] = useState()
     useEffect(() => {
         async function getData() {
-            const { data } = await axios.get('https://lorenzelektrek-back.onrender.com/')
+            const { data } = await axios.get('https://lorenzelektrek-back.onrender.com')
             console.log(data.contact_info)
             setContact_info(data.contact_info)
             setProjects(data.projects)
