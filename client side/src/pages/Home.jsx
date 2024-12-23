@@ -98,7 +98,7 @@ export default function Home() {
                     </div>
                 </div>
             </header>
-            <section className='pt-1  main-section'>
+            <section className='pt-1 bg-dark  main-section'>
                 <section className='first-section d-flex py-4 flex-wrap-reverse align-items-center justify-content-between z-3' style={{ minHeight: "calc(100vh - 63px)", marginTop: "64px" }}>
                     <div className='position-absolute w-100 vh-100 bg-dark z-2 opacity-50'>
 
@@ -138,7 +138,7 @@ export default function Home() {
                 </section> */}
                 {/* projects section */}
                 <section id='projects' className='projects-section py-5 position-relative'>
-                    <h2 className='text-capitalize text-center' style={{ fontFamily: "BebasNeue", fontSize: "40px" }}>en önemli projeler</h2>
+                    <h2 className='text-capitalize text-light text-center' style={{ fontFamily: "BebasNeue", fontSize: "40px" }}>en önemli projeler</h2>
                     <div className='d-flex align-items-center z-1 p-5 gap-4 justify-content-center flex-wrap'>
                         {
                             projects?.map((project) => (
@@ -171,7 +171,7 @@ export default function Home() {
                 </section>
                 {/* contact section */}
                 <section className='py-4' id='contact-section' style={{ backgroundColor: "#333" }}>
-                    <h2 className='text-capitalize text-center mb-4' style={{ fontFamily: "BebasNeue", fontSize: "40px" }}>bize Ulaşın</h2>
+                    <h2 className='text-capitalize text-light text-center mb-4' style={{ fontFamily: "BebasNeue", fontSize: "40px" }}>bize Ulaşın</h2>
                     <div className='d-flex justify-content-center flex-wrap gap-4'>
                         <div className='card py-4 px-2 text-center' style={{ width: "300px" }}>
                             <div>
