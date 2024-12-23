@@ -48,12 +48,12 @@ function Photos({ photos, setWindow }) {
 }
 
 export default function Home() {
-    const [loading, isLoading] = useState(true)
-    useEffect(() => {
-        setTimeout(() => {
-            isLoading(false)
-        }, 6000);
-    }, [])
+    // const [loading, isLoading] = useState(true)
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         isLoading(false)
+    //     }, 6000);
+    // }, [])
     // get contact info data 
     const [contact_info, setContact_info] = useState()
     const [projects, setProjects] = useState()
@@ -68,20 +68,20 @@ export default function Home() {
     }, [])
 
     const [window, setWindow] = useState(null)
-    if (loading) {
-        return (
-            <video id='video' autoPlay muted style={{
-                position: "fixed",
-                top: "0",
-                bottom: "0",
-                width: "100vw",
-                height: "100vh",
-                objectFit: "cover"
-            }}>
-                <source src="../../public/logo.mp4" />
-            </video>
-        )
-    }
+    // if (loading) {
+    //     return (
+    //         <video id='video' autoPlay muted style={{
+    //             position: "fixed",
+    //             top: "0",
+    //             bottom: "0",
+    //             width: "100vw",
+    //             height: "100vh",
+    //             objectFit: "cover"
+    //         }}>
+    //             <source src="../../public/logo.mp4" />
+    //         </video>
+    //     )
+    // }
     return (
         <>
             <header className="main-header px-3 py-1 d-flex flex-wrap position-fixed w-100 z-3" >
@@ -90,7 +90,7 @@ export default function Home() {
                 </div>
                 <div className="right-div">
                     <ul className=''>
-                        <li className="d-flex align-items-center text-light"><a href='#services' className="text-light text-decoration-none">hizmetler</a></li>
+                        {/* <li className="d-flex align-items-center text-light"><a href='#services' className="text-light text-decoration-none">hizmetler</a></li> */}
                         <li className="d-flex align-items-center text-light"><a href='#projects' className="text-light text-decoration-none">projeler</a></li>
                     </ul>
                     <div className="left-div">
@@ -98,23 +98,23 @@ export default function Home() {
                     </div>
                 </div>
             </header>
-            <section className='pt-3 text-bg-dark main-section'>
-                <section className='d-flex py-4 flex-wrap-reverse align-items-center justify-content-between z-3' style={{ minHeight: "calc(100vh - 63px)", marginTop: "64px" }}>
-                    <div className='text-center w-100'>
-                        <h1 className='text-danger' style={{ fontFamily: "ProtestGuerrilla", fontSize: "45px" }}>WE FOCUS ON BUILDING STRONG RELATIONSHIPS</h1>
-                        <p className='mw-75' style={{ fontSize: "30px", fontFamily: "BebasNeue" }}>For 34 years, we have been building the future with firm steps by prioritizing institutionalism and quality.</p>
+            <section className='pt-1  main-section'>
+                <section className='first-section d-flex py-4 flex-wrap-reverse align-items-center justify-content-between z-3' style={{ minHeight: "calc(100vh - 63px)", marginTop: "64px" }}>
+                    <div className='position-absolute w-100 vh-100 bg-dark z-2 opacity-50'>
 
-                        <button className='btn btn-primary text-capitalize'>more about us</button>
                     </div>
-                    <div className='d-flex align-items-center justify-content-center'>
-                        <img src="/3D logo.png" className='' style={{ minWidth: "400px", maxWidth: "50%" }} alt="" />
+                    <div className='text-center w-100 z-3'>
+                        <h1 className='text-danger' style={{ fontFamily: "ProtestGuerrilla", fontSize: "45px" }}>Lorenz Elektrik olarak</h1>
+                        <p className='mw-100 w-50 m-auto text-light text-center' style={{ fontSize: "25px", fontFamily: "BebasNeue" }}>konut ve endüstriyel projelerin ihtiyaçlarını karşılayan yenilikçi ve entegre elektrik çözümleri sunuyoruz. Bu alandaki uzun yıllara dayanan deneyimimiz ve derin bilgi birikimimiz sayesinde, müşteri memnuniyetini garanti eden yüksek kaliteli hizmetler sağlıyoruz.
+                            Hizmetlerimiz; elektrik sistemlerinin tasarımı, kurulumu ve bakımı gibi alanları kapsar ve her zaman en yüksek güvenlik ve verimlilik standartlarına uygun çalışırız. Ayrıca, projelerinizin sorunsuz bir şekilde ilerlemesini sağlamak için planlamadan gerekli izinlerin alınmasına kadar tam destek sunuyoruz.
+                            Lorenz Elektrik'i tercih etmek; güven, kalite ve yenilik üzerine kurulu bir ortaklık anlamına gelir. Hayallerinizi gerçeğe dönüştürmek için buradayız.</p>
+                        {/* <button className='btn btn-primary text-capitalize'>more about us</button> */}
                     </div>
                 </section>
-                {/* slide */}
-                <section className='slide vh-100 w-100'>
+
+                {/* <section className='slide vh-100 w-100'>
                     <img src={slide_images[1]} alt="" className='h-100 w-100' />
                 </section>
-                {/* services card */}
                 <section id='services' className='d-flex flex-wrap align-items-center gap-3 justify-content-center' style={{ marginTop: "-300px" }}>
                     <div className='text-bg-light  ' style={{ width: "350px", height: "600px", border: "2px solid #eee", borderRadius: "7px" }}>
                         <img className=' w-100' src="/electric-residential-fuses-1024x679.jpg" alt="" />
@@ -135,7 +135,7 @@ export default function Home() {
                             Meric Electric, Inc. as; We operate in the fields of electrical project design, electrical contracting, consultancy services, measurement, analysis and reporting services.
                         </p>
                     </div>
-                </section>
+                </section> */}
                 {/* projects section */}
                 <section id='projects' className='projects-section py-5 position-relative'>
                     <h2 className='text-capitalize text-center' style={{ fontFamily: "BebasNeue", fontSize: "40px" }}>en önemli projeler</h2>
@@ -215,14 +215,14 @@ export default function Home() {
                     <div className='d-flex align-items-center justify-content-center'>
                         <img src="/LORENZ ELEKTRİK LOGO.png" className='' style={{ width: '200px' }} alt="" />
                     </div>
-                    
+
                     <div className='text-capitalize w-25 text-center'>
                         <hr />
                         <h3 >page sections</h3>
                         <ul className='list-unstyled'>
-                        <li className="d-flex align-items-center text-light"><a href='#services'  className="text-light text-decoration-none">hizmetler</a></li>
+                            <li className="d-flex align-items-center text-light"><a href='#services' className="text-light text-decoration-none">hizmetler</a></li>
                             <li className="d-flex align-items-center text-light"><a href='#projects' className="text-light text-decoration-none">projeler</a></li>
-                            <li className="d-flex align-items-center text-light"><a href='#contact-section'  className="text-light text-decoration-none">bize Ulaşın</a></li>
+                            <li className="d-flex align-items-center text-light"><a href='#contact-section' className="text-light text-decoration-none">bize Ulaşın</a></li>
                         </ul>
                         <hr />
                     </div>
