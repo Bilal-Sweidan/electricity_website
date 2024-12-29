@@ -36,7 +36,7 @@ export default function Home() {
                                 2
                             </p>
                         </div>
-                        <img src="../../public/IAP_Blog_IndustrialElectricalWork_The-Growing-Demand-for-Industrial-Electricians.jpg" alt="" style={{ borderRadius: "7px" , height : "225px" }} />
+                        <img src="/IAP_Blog_IndustrialElectricalWork_The-Growing-Demand-for-Industrial-Electricians.jpg" alt="" style={{ borderRadius: "7px" , height : "225px" }} />
                         <div className='px-2 py-3 text-light'>
                             <h4 className='text-center text-capitalize'>Industrial electricity</h4>
                             <p className='text-center'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Libero nihil neque quam alias, non eveniet. Doloremque laboriosam fugit quod eum</p>

@@ -12,7 +12,7 @@ export default function Contact() {
     useEffect(() => {
         async function getData() {
             setLoading(true)
-            const { data } = await axios.get('https://lorenzelektrek-back.onrender.com')
+            const { data } = await axios.get('https://lorenzelektrek-back.onrender.com/contact')
             setContact_info(data.contact_info)
             setLoading(false)
         }

@@ -31,7 +31,7 @@ export default function Projects() {
     useEffect(() => {
         async function getData() {
             setLoading(true)
-            const { data } = await axios.get('https://lorenzelektrek-back.onrender.com')
+            const { data } = await axios.get('https://lorenzelektrek-back.onrender.com/projects')
             setProjects(data.projects)
             setLoading(false)
         }
