@@ -24,7 +24,7 @@ export default function Contact() {
                 isLoading ? <Loading /> :
                     <section className='' id='contact-section' style={{ backgroundColor: "", height: "calc(100vh - 79px)" }}>
                         <h2 className='text-capitalize text-dark text-center mb-4' style={{ fontFamily: "BebasNeue", fontSize: "40px" }}>bize Ulaşın</h2>
-                        <div className='contact-div align-items-center d-flex flex-wrap w-100' style={{ backgroundImage: "url(../../public/24340.jpg)", backgroundSize: "cover", backgroundRepeat: "no-repeat", height: "calc(100vh - 75px)" }}>
+                        <div className='contact-div align-items-center d-flex flex-wrap w-100' style={{ backgroundImage: "url(/24340.jpg)", backgroundSize: "cover", backgroundRepeat: "no-repeat", height: "calc(100vh - 75px)" }}>
                             <div className="text-light px-4 py-5 mx-5" style={{ width: "500px", height: "500px", backgroundColor: "#333333e2", borderRadius: "15px" }}>
                                 <div className="mb-4">
                                     <div className="d-flex gap-3">
