@@ -3,7 +3,9 @@
 * {
     padding: 0;
     margin: 0;
-
+    .card{
+        padding : 0px ;
+    }
     .main-header {
         background-color: #021526 !important;
         user-select: none;
@@ -13,8 +15,6 @@
         position: relative;
 
         .center-div {
-            // position: absolute;
-            // left: 10%;
 
             .logo {
                 font-family: Sevillana !important;
@@ -41,6 +41,9 @@
                     display: flex;
                     margin-right: 20px;
                     margin-top: 5%;
+                    a:hover{
+                        color: #5C3C74 !important;
+                    }
                 }
             }
         }
@@ -65,6 +68,17 @@
     }
     .first-section{
         background-image: url('../../public/slide/ai-generated-8866051_1920.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+        div:nth-child(2){
+            width: 700px;
+            background-color: #333333c0 !important;
+
+            padding: 20px;
+            margin: 20px 10px;
+            border-radius: 15px;
+        }
     }
     .projects-section{
         .card {

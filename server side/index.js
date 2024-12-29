@@ -12,12 +12,19 @@ app.use(cors())
 
 const { Admin, Contact_info , Projects } = require('./Schema/Schema')
 
-app.get('/', async (req, res) => {
+app.get('/projects', async (req, res) => {
     try {
-        const info = await Contact_info.find()
         const projects = await Projects.find()
         console.log(projects)
-        res.status(200).json({ "status": true, "contact_info": info[0] , "projects" : projects})
+        res.status(200).json({ "status": true , "projects" : projects})
+    } catch (err) {
+        console.error(err)
+    }
+})
+app.get('/contact', async (req, res) => {
+    try {
+        const info = await Contact_info.find()
+        res.status(200).json({ "status": true, "contact_info": info[0]})
     } catch (err) {
         console.error(err)
     }
