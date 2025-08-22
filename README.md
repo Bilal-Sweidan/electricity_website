@@ -6,7 +6,7 @@
     - node.js
     - express.js
     - mongoDB
-    - 
+  
 🔧 Issues / mistakes
 
 ❌  Files structure can be more orginized
